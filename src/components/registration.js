@@ -10,12 +10,7 @@ import {StyleSheet,
 import {db} from '../config'
 
 let addregistration =(reg) =>{
-  db.ref('/regs').push({
-    name:reg.name,
-    password:reg.password,
-    email:reg.email,
-    phone:reg.phone,
-  })
+  db.ref('/regs').push(reg)
 }
 
 export default class Registration extends Component {
@@ -76,7 +71,7 @@ onClickListener = (viewId) => {
             placeholder="Full name"
             keyboardType="email-address"
             underlineColorAndroid='transparent'
-            onChangeText={(fullName) => this.setState({fullName})} onChange={this.nameChanger}/>
+            onChange={this.nameChanger}/>
       </View>
       <View style={styles.inputContainer}>
         <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
@@ -84,7 +79,7 @@ onClickListener = (viewId) => {
             placeholder="Password"
             secureTextEntry={true}
             underlineColorAndroid='transparent'
-            onChangeText={(password) => this.setState({password})} onChange={this.passwordChanger}/>
+            onChange={this.passwordChanger}/>
       </View>
 
       <View style={styles.inputContainer}>
@@ -93,7 +88,7 @@ onClickListener = (viewId) => {
             placeholder="Email"
             keyboardType="email-address"
             underlineColorAndroid='transparent'
-            onChangeText={(email) => this.setState({email})} onChange={this.emailChanger}/>
+            onChange={this.emailChanger}/>
       </View>
       
       <View style={styles.inputContainer}>
@@ -101,12 +96,12 @@ onClickListener = (viewId) => {
         <TextInput style={styles.inputs}
             placeholder="Phone"
             underlineColorAndroid='transparent'
-            onChangeText={(password) => this.setState({password})} onChange={this.phoneChanger}/>
+             onChange={this.phoneChanger}/>
       </View>
       
 
       <TouchableHighlight>
-        <Button title="Sign up" style={styles.signUpText}>Sign up</Button>
+        <Button title="Sign up" style={styles.signUpText} onPress={this.signupChanger}  >Sign up</Button>
       </TouchableHighlight>
     </View>
     )
